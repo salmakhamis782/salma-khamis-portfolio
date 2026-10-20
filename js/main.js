@@ -270,9 +270,6 @@
         <ul>${pts.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></li>`;
     }).join('');
 
-    const E = D.education;
-    $('#edu').innerHTML = `<div><span class="eyebrow">${T('education')} · ${esc(E.status)}</span><h3>${esc(L(E, 'degree'))}</h3><p>${esc(L(E, 'institution'))} · ${esc(E.location)} · ${esc(E.period)}</p></div>`;
-
     $('#contactLinks').innerHTML = [
       ['https://wa.me/' + P.phone.replace(/\D/g, ''), T('whatsapp'), P.phone, T('hintWa'), '#1d4ed8', '#38bdf8'],
       ['mailto:' + P.email, T('email'), P.email, T('hintMail'), '#1e3a8a', '#3b82f6'],
@@ -449,17 +446,6 @@
             <a class="chat-act" href="#awards">🏆 View All 7 Honors</a>
           </div>
           ${renderFollowUps([['whoami', '👋 Executive Profile'], ['experience', '📈 Career & Impact'], ['hire', '💼 Hire Salma']])}`
-      };
-    }
-
-    if (q.includes('edu') || q.includes('university') || q.includes('degree')) {
-      const E = D.education;
-      return {
-        tag: 'Education',
-        conf: E.status,
-        html: `
-          <p><b>${esc(E.degree)}</b><br>${esc(E.institution)} · ${esc(E.location)} (<em>${esc(E.period)}</em>)</p>
-          ${renderFollowUps([['experience', '📈 Work History'], ['gold', '🏆 7 Awards'], ['hire', '💼 Contact Salma']])}`
       };
     }
 
