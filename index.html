@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="crimson">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js")</script>
+<title>Salma Khamis — Senior Full-Stack Web Developer</title>
+<meta name="description" content="Senior Full-Stack Web Developer in 6th of October City, Egypt. 21 production web platforms, custom admin dashboards, and bilingual RTL/LTR CMS for real estate, medical, e-commerce, and corporate clients across Egypt and the Gulf. WorldSkills Egypt Gold Medalist.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Salma Khamis — Senior Full-Stack Web Developer">
+<meta property="og:description" content="21 production platforms shipped · 5+ years full-stack · WorldSkills Egypt Gold Medalist · React.js, Angular, Node.js, PHP/Laravel &amp; MySQL.">
+<meta property="og:image" content="assets/projects/vira-realestate.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Salma Khamis — Senior Full-Stack Web Developer">
+<meta name="twitter:description" content="21 production platforms shipped · 5+ years full-stack · WorldSkills Egypt Gold Medalist · React.js, Angular, Node.js, PHP/Laravel &amp; MySQL.">
+<meta name="twitter:image" content="assets/projects/vira-realestate.webp">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=10">
+</head>
+<body>
+
+<!-- 3D WebGL & Interactive Particle Playground Canvas -->
+<canvas class="webgl" id="webglCanvas" aria-hidden="true"></canvas>
+<div class="grid-overlay" aria-hidden="true"></div>
+
+<!-- Live 3D Stage Telemetry HUD -->
+<div class="stage-hud" id="stageHud" aria-hidden="true">
+  <span class="stage-hud__dot"></span>
+  <span class="stage-hud__label" id="stageHudText">Full-Stack Web Development</span>
+</div>
+
+<!-- Boot / Intro Preloader Sequence (1 -> 100 Counter) -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro__panel intro__panel--top"></div>
+  <div class="intro__panel intro__panel--bottom"></div>
+  <div class="intro__center" id="introCenter">
+    <div class="intro__brand">
+      <div class="mark mark--xl" id="introMark">
+        <span>SK</span>
+        <i class="mark__orbit"></i>
+      </div>
+      <span class="intro__tag">SALMA KHAMIS · SENIOR FULL-STACK WEB DEVELOPER</span>
+    </div>
+    <div class="intro__counter" aria-live="off">
+      <span class="intro__num" id="introCount">1</span><span class="intro__pct">%</span>
+    </div>
+    <div class="intro__bar"><i id="introBar"></i></div>
+    <div class="intro__status" id="introStatus">LOADING FULL-STACK ARCHITECTURE...</div>
+  </div>
+</div>
+
+<div class="glow" id="glow" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__dock">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="mark"><span>SK</span><i class="mark__ring"></i></span>
+      <div class="brand__meta">
+        <span class="brand__name" data-i18n="brand">Salma Khamis</span>
+        <span class="brand__tag"><i class="dot dot--sm"></i> <span data-i18n="nav.roleTag">Senior Full-Stack Web Developer</span></span>
+      </div>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Sections">
+      <span class="nav__glider" id="navGlider" aria-hidden="true"></span>
+      <a href="#architecture"><small class="nav__idx">01</small><span data-i18n="nav.arch">Architecture</span></a>
+      <a href="#work"><small class="nav__idx">02</small><span data-i18n="nav.work">Work</span><b class="nav__count">21</b></a>
+      <a href="#playground"><small class="nav__idx">03</small><span data-i18n="nav.playground">Ask about me</span></a>
+      <a href="#skills"><small class="nav__idx">04</small><span data-i18n="nav.skills">Skills</span></a>
+      <a href="#awards"><small class="nav__idx">05</small><span data-i18n="nav.awards">Awards</span></a>
+      <a href="#experience"><small class="nav__idx">06</small><span data-i18n="nav.experience">Experience</span></a>
+      <a href="#contact"><small class="nav__idx">07</small><span data-i18n="nav.contact">Contact</span></a>
+    </nav>
+
+    <div class="nav__right">
+      <span class="nav__avail" title="Available for senior roles &amp; commercial builds">
+        <i class="nav__beacon"></i>
+        <span>Available</span>
+      </span>
+      <a class="btn btn--grad btn--nav" href="#contact" data-magnet>
+        <span data-i18n="nav.hire">Hire me</span>
+        <i class="nav__arrow" aria-hidden="true">↗</i>
+      </a>
+      <button class="nav__toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<noscript><p>This page needs JavaScript to render the portfolio. Reach me directly: salmakhamis782@gmail.com · +20 127 567 5202 · linkedin.com/in/salma-khamis-684a45249 · <a href="Salma_Khamis_CV.pdf">Download CV</a></p></noscript>
+
+<!-- NODE 01: HERO -->
+<section class="hero" id="hero">
+  <div class="blobs" aria-hidden="true"><i class="blob blob--1"></i><i class="blob blob--2"></i><i class="blob blob--3"></i></div>
+
+  <div class="hero__grid">
+    <div class="hero__text">
+      <p class="eyebrow hero__eyebrow"><span class="dot"></span><span id="heroBadge"></span></p>
+      <h1 class="hero__title" id="heroTitle"></h1>
+      <p class="hero__lead" id="heroSummary" data-reveal></p>
+
+      <div class="hero__cta" data-reveal>
+        <a class="btn btn--grad btn--lg" href="#work" data-magnet><span data-i18n="hero.seeWork">View 21 Projects ↓</span></a>
+        <a class="btn btn--line btn--lg" href="Salma_Khamis_CV.pdf" download data-magnet><span data-i18n="hero.cv">Download CV</span></a>
+      </div>
+    </div>
+  </div>
+
+  <ul class="stats stats--compact" data-reveal>
+    <li data-spotlight>
+      <svg viewBox="0 0 80 80"><circle class="ring__bg" cx="40" cy="40" r="34"/><circle class="ring" cx="40" cy="40" r="34" data-ring="1"/></svg>
+      <div><strong data-count="21">21</strong><span data-i18n="stats.projects">platforms shipped</span></div>
+    </li>
+    <li data-spotlight>
+      <svg viewBox="0 0 80 80"><circle class="ring__bg" cx="40" cy="40" r="34"/><circle class="ring ring--2" cx="40" cy="40" r="34" data-ring="0.85"/></svg>
+      <div><strong data-count="5" data-suffix="+">5+</strong><span data-i18n="stats.years">years full-stack</span></div>
+    </li>
+    <li data-spotlight>
+      <svg viewBox="0 0 80 80"><circle class="ring__bg" cx="40" cy="40" r="34"/><circle class="ring ring--3" cx="40" cy="40" r="34" data-ring="1"/></svg>
+      <div><strong data-count="7">7</strong><span data-i18n="stats.awards">accredited titles</span></div>
+    </li>
+    <li data-spotlight>
+      <svg viewBox="0 0 80 80"><circle class="ring__bg" cx="40" cy="40" r="34"/><circle class="ring ring--4" cx="40" cy="40" r="34" data-ring="0.92"/></svg>
+      <div><strong data-count="9">9</strong><span data-i18n="stats.roles">roles &amp; programs</span></div>
+    </li>
+  </ul>
+</section>
+
+<!-- WHAT I DO / FULL-STACK ARCHITECTURE -->
+<section class="arch" id="architecture">
+  <div class="section__head" data-reveal>
+    <p class="eyebrow"><span class="dot"></span><span data-i18n="arch.eyebrow">What I Do · Full-Stack Engineering</span></p>
+    <h2 data-i18n-html="arch.title">End-to-end <span class="grad">web architecture.</span></h2>
+    <p class="section__sub" data-i18n="arch.sub">From pixel-perfect responsive interfaces in React &amp; Angular to secure Laravel/Node.js APIs, custom bilingual CMS dashboards, and optimized relational databases.</p>
+  </div>
+
+  <div class="arch__pillars" id="archPillars"></div>
+</section>
+
+<!-- SELECTED WORK / 21 PLATFORMS (PINNED HORIZONTAL SCROLL) -->
+<section class="work" id="work">
+  <div class="work__sticky" id="workSticky">
+    <div class="work__head">
+      <div class="section__head work__title-block" data-reveal>
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="work.eyebrow">Featured Work · 21 Live &amp; Commercial Builds</span></p>
+        <h2 data-i18n-html="work.title">Featured <span class="grad">Client Projects.</span></h2>
+        <p class="section__sub" data-i18n="work.sub">Production web platforms, enterprise portals, and custom admin dashboards delivered for clients across Egypt &amp; the Gulf.</p>
+      </div>
+      <div class="work__hud" data-reveal>
+        <span class="work__counter" id="workCounter">01 / 21</span>
+        <div class="work__prog" aria-hidden="true"><i id="workProgFill"></i></div>
+        <div class="work__nav">
+          <button type="button" class="work__arrow" id="workPrev" aria-label="Previous project">←</button>
+          <button type="button" class="work__arrow" id="workNext" aria-label="Next project">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="filters" id="filters" data-reveal></div>
+    <div class="work__viewport" id="workViewport">
+      <div class="cards" id="cards"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ASK ABOUT ME & STACK EXPLORER -->
+<section class="playground" id="playground">
+  <div class="section__head" data-reveal>
+    <p class="eyebrow"><span class="dot"></span><span data-i18n="play.eyebrow">Interactive Q&amp;A &amp; Solution Planner</span></p>
+    <h2 data-i18n-html="play.title">Ask <span class="grad">about me.</span></h2>
+    <p class="section__sub" data-i18n="play.sub">Ask my portfolio assistant anything on the left, or select what you need built on the right to see the exact architecture and live reference builds.</p>
+  </div>
+
+  <div class="play__grid">
+    <!-- Widget 1: Interactive Ask About Me Assistant -->
+    <div class="term" data-reveal data-spotlight>
+      <div class="term__bar">
+        <div class="term__bar-left">
+          <div class="term__dots"><i></i><i></i><i></i></div>
+          <span class="term__avatar">SK</span>
+          <div class="term__meta">
+            <span class="term__title">Ask About Salma</span>
+            <span class="term__sub">Interactive Portfolio Knowledge Engine · 21 Projects Indexed</span>
+          </div>
+        </div>
+        <div class="term__bar-right">
+          <span class="term__badge"><i class="dot dot--sm"></i> <span data-i18n="play.badge">Online</span></span>
+          <button type="button" class="term__clear" id="termClearBtn" title="Clear conversation">🧹 Clear</button>
+        </div>
+      </div>
+      <div class="term__chips" id="termChips">
+        <button type="button" class="is-active" data-cmd="whoami" data-label="👋 Who is Salma Khamis?">👋 Who is Salma?</button>
+        <button type="button" data-cmd="stack" data-label="🛠️ What is Salma's Full-Stack Tech Arsenal?">🛠️ Tech Arsenal</button>
+        <button type="button" data-cmd="projects" data-label="🚀 Show me Salma's Top Flagship Live Projects">🚀 Flagship Projects</button>
+        <button type="button" data-cmd="experience" data-label="📈 What is Salma's Work History & Key Results?">📈 Career &amp; Impact</button>
+        <button type="button" data-cmd="domains" data-label="🏢 Real Estate, Medical & Enterprise Systems">🏢 Industry Systems</button>
+        <button type="button" data-cmd="gold" data-label="🏆 Tell me about WorldSkills Gold & 7 Awards">🏆 Gold &amp; Awards</button>
+        <button type="button" data-cmd="hire" data-label="💼 Why Hire Salma & How to Contact?">💼 Hire &amp; Contact</button>
+      </div>
+      <div class="term__body" id="termOutput" role="log" aria-live="polite"></div>
+      <form class="term__input" id="termForm" autocomplete="off">
+        <span class="term__prompt">Ask ›</span>
+        <input type="text" id="termField" placeholder="Ask anything (e.g. Laravel, React, VIRA, real estate, experience, remote, CV)..." aria-label="Ask about Salma input">
+        <button type="submit" class="btn btn--grad btn--sm" data-i18n="play.askBtn">Ask ↵</button>
+      </form>
+    </div>
+
+    <!-- Widget 2: Interactive Solution Blueprint & Hiring Scope Builder -->
+    <div class="labcard" data-reveal data-spotlight>
+      <div class="labcard__head">
+        <span class="eyebrow" data-i18n="lab.eyebrow">Solution Blueprint &amp; Hiring Fit</span>
+        <h3 data-i18n="lab.title">What Are We Building Together?</h3>
+        <p data-i18n="lab.sub">Select a platform type or engineering role below to see my proven full-stack architecture, deliverables, and live reference builds.</p>
+      </div>
+
+      <div class="scope__tabs" id="scopeTabs" role="tablist" aria-label="Project or role type"></div>
+      <div class="scope__body" id="scopeBody" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS & ARCHITECTURE -->
+<section class="skills" id="skills">
+  <div class="section__head" data-reveal>
+    <p class="eyebrow"><span class="dot"></span><span data-i18n="skills.eyebrow">Technical Stack &amp; Core Proficiencies</span></p>
+    <h2 data-i18n-html="skills.title">Technical skills <span class="grad">&amp; architecture.</span></h2>
+    <p class="section__sub" data-i18n="skills.sub">Core technologies, frameworks, databases and engineering practices applied across production systems.</p>
+  </div>
+  <div class="bars" id="metrics"></div>
+  <div class="skillgrid" id="skillgrid"></div>
+</section>
+
+<!-- HONORS & AWARDS (PODIUM SPOTLIGHT + INTERACTIVE LEDGER) -->
+<section class="awards" id="awards">
+  <div class="section__head" data-reveal>
+    <p class="eyebrow"><span class="dot"></span><span data-i18n="awards.eyebrow">National &amp; International Recognition</span></p>
+    <h2 data-i18n-html="awards.title">Honors <span class="grad">&amp; awards.</span></h2>
+    <p class="section__sub" data-i18n="awards.sub">National championships, international podium honors and competitive robotics victories. Select any title below to inspect the competition brief.</p>
+  </div>
+  <div class="awards__showcase" id="awardgrid"></div>
+  <blockquote class="quote" id="quote" data-reveal><span id="quoteText"></span></blockquote>
+  <div class="marquee marquee--inline" aria-hidden="true">
+    <div class="marquee__row"><div class="marquee__track" id="marqueeA"></div></div>
+    <div class="marquee__row marquee__row--reverse"><div class="marquee__track" id="marqueeB"></div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE TIMELINE -->
+<section class="exp" id="experience">
+  <div class="section__head" data-reveal>
+    <p class="eyebrow"><span class="dot"></span><span data-i18n="exp.eyebrow">Work History &amp; Technical Leadership</span></p>
+    <h2 data-i18n-html="exp.title">Professional <span class="grad">experience.</span></h2>
+    <p class="section__sub" data-i18n="exp.sub">5+ years delivering enterprise software, leading technical teams and instructing web development.</p>
+  </div>
+  <ol class="timeline" id="timeline"></ol>
+  <div class="edu" id="edu" data-reveal data-spotlight></div>
+</section>
+
+<!-- NODE 08: CONTACT PORTAL -->
+<section class="contact" id="contact">
+  <div class="blobs blobs--contact" aria-hidden="true"><i class="blob blob--4"></i><i class="blob blob--5"></i></div>
+  <p class="eyebrow eyebrow--center" data-reveal><span class="dot"></span><span data-i18n="contact.eyebrow">Available for commercial &amp; senior roles</span></p>
+  <h2 class="contact__title" data-reveal data-i18n-html="contact.title">Let's build <span class="grad grad--animate">something bold.</span></h2>
+  <p class="contact__lead" data-reveal data-i18n="contact.lead">Direct channels for software engineering positions, commercial web platforms and architectural consultations. Fastest reply on WhatsApp.</p>
+
+  <div class="contact__direct" data-reveal>
+    <a class="btn btn--glass" href="mailto:salmakhamis782@gmail.com">✉️ salmakhamis782@gmail.com</a>
+    <a class="btn btn--line" href="Salma_Khamis_CV.pdf" download data-i18n="hero.cv">Download CV</a>
+  </div>
+
+  <div class="contact__links" id="contactLinks"></div>
+
+  <p class="contact__foot" data-reveal><span data-i18n="contact.remote">Global remote · Hybrid in Cairo / Giza · Open to relocation</span></p>
+</section>
+
+</main>
+
+<footer class="foot">
+  <span class="mark mark--sm"><span>SK</span></span>
+  <span id="footLocation"></span>
+  <span class="foot__status"><i class="dot dot--sm"></i> <span data-i18n="nav.roleTag">Senior Full-Stack Web Developer</span></span>
+  <span id="year"></span>
+</footer>
+
+<button class="totop" id="totop" type="button" aria-label="Back to top">↑</button>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__backdrop" id="modalClose"></div>
+  <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__x" id="modalX" type="button" aria-label="Close">×</button>
+    <div class="modal__cover" id="modalCover"><img id="modalImg" alt="Project preview"></div>
+    <div class="modal__body">
+      <p class="eyebrow"><span id="modalBadge"></span> · <span id="modalYear"></span></p>
+      <h3 id="modalTitle"></h3>
+      <p class="modal__sub" id="modalSub"></p>
+      <p class="modal__desc" id="modalDesc"></p>
+      <p class="modal__metrics" id="modalMetrics"></p>
+      <div class="tags" id="modalTags"></div>
+      <a class="btn btn--grad" id="modalLink" href="#work" target="_blank" rel="noopener"><span>View live</span></a>
+    </div>
+  </div>
+</div>
+
+<script src="js/three.min.js" defer></script>
+<script src="js/anime.umd.min.js" defer onerror="document.documentElement.classList.remove('js')"></script>
+<script src="js/data.js?v=10" defer onerror="document.documentElement.classList.remove('js')"></script>
+<script src="js/main.js?v=10" defer onerror="document.documentElement.classList.remove('js')"></script>
+</body>
+</html>
