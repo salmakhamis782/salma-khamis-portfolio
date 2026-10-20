@@ -602,8 +602,8 @@ const PORTFOLIO_DATA = {
       company: "Raya Academy",
       company_ar: "أكاديمية راية",
       location: "Cairo, Egypt",
-      period: "2025 - Present",
-      status: "ACTIVE MENTOR",
+      period: "2025",
+      status: "COMPLETED",
       icon: "graduation-cap",
       badge: "Full-Stack Training",
       points_en: [
@@ -621,8 +621,8 @@ const PORTFOLIO_DATA = {
       company: "Teaching Planet Academy",
       company_ar: "أكاديمية تيتشينج بلانيت",
       location: "Cairo, Egypt",
-      period: "Jan 2025 - Present",
-      status: "ACTIVE MENTOR",
+      period: "2025",
+      status: "COMPLETED",
       icon: "book-open",
       badge: "Industry Standards",
       points_en: [
