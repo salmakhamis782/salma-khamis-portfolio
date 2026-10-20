@@ -271,8 +271,7 @@
     }).join('');
 
     const E = D.education;
-    $('#edu').innerHTML = `<div><span class="eyebrow">${T('education')} · ${esc(E.status)}</span><h3>${esc(L(E, 'degree'))}</h3><p>${esc(L(E, 'institution'))} · ${esc(E.location)} · ${esc(E.period)}</p></div>
-      <div class="edu__langs">${E.languages.map(l => `<span>${esc(l.name)}<b>${esc(l.level)}</b></span>`).join('')}</div>`;
+    $('#edu').innerHTML = `<div><span class="eyebrow">${T('education')} · ${esc(E.status)}</span><h3>${esc(L(E, 'degree'))}</h3><p>${esc(L(E, 'institution'))} · ${esc(E.location)} · ${esc(E.period)}</p></div>`;
 
     $('#contactLinks').innerHTML = [
       ['https://wa.me/' + P.phone.replace(/\D/g, ''), T('whatsapp'), P.phone, T('hintWa'), '#1d4ed8', '#38bdf8'],
@@ -453,14 +452,13 @@
       };
     }
 
-    if (q.includes('edu') || q.includes('university') || q.includes('degree') || q.includes('language')) {
+    if (q.includes('edu') || q.includes('university') || q.includes('degree')) {
       const E = D.education;
       return {
-        tag: 'Education & Languages',
+        tag: 'Education',
         conf: E.status,
         html: `
           <p><b>${esc(E.degree)}</b><br>${esc(E.institution)} · ${esc(E.location)} (<em>${esc(E.period)}</em>)</p>
-          <p><b>Languages:</b> ${E.languages.map(l => `<em>${esc(l.name)}</em> (${esc(l.level)})`).join(' · ')}</p>
           ${renderFollowUps([['experience', '📈 Work History'], ['gold', '🏆 7 Awards'], ['hire', '💼 Contact Salma']])}`
       };
     }
