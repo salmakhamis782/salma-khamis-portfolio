@@ -81,8 +81,8 @@
 }
 
 :root {
-  --font-display: "Syne", "Tajawal", system-ui, sans-serif;
-  --font-body: "DM Sans", "Tajawal", system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
