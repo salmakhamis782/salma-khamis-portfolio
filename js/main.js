@@ -63,22 +63,22 @@
 
   const NO_LOGO = new Set(['upscale-egypt', 'al-arabyia']);
   const CAT_COLORS = {
-    realestate: ['#7f1d1d', '#dc2626'],
-    fullstack: ['#991b1b', '#ff2a5f'],
-    laravel: ['#b91c1c', '#f59e0b'],
-    corporate: ['#450a0a', '#b91c1c'],
-    iot: ['#dc2626', '#f59e0b'],
-    frontend: ['#be123c', '#fb7185'],
-    ecommerce: ['#881337', '#e11d48']
+    realestate: ['#1e3a8a', '#2563eb'],
+    fullstack: ['#1d4ed8', '#38bdf8'],
+    laravel: ['#0369a1', '#06b6d4'],
+    corporate: ['#172554', '#3b82f6'],
+    iot: ['#0284c7', '#22d3ee'],
+    frontend: ['#2563eb', '#60a5fa'],
+    ecommerce: ['#1e40af', '#38bdf8']
   };
   const AWARD_COLORS = {
-    gold: ['#fbbf24', '#b45309'],
-    silver: ['#f43f5e', '#881337'],
-    cyan: ['#ef4444', '#7f1d1d'],
-    purple: ['#e11d48', '#4c0519'],
-    blue: ['#f97316', '#9a3412'],
-    emerald: ['#fb7185', '#9f1239'],
-    violet: ['#dc2626', '#450a0a']
+    gold: ['#38bdf8', '#1d4ed8'],
+    silver: ['#60a5fa', '#1e3a8a'],
+    cyan: ['#06b6d4', '#0369a1'],
+    purple: ['#3b82f6', '#172554'],
+    blue: ['#2563eb', '#1e3a8a'],
+    emerald: ['#22d3ee', '#0284c7'],
+    violet: ['#60a5fa', '#1e40af']
   };
 
   const LAYER_CONSOLES = {
@@ -189,7 +189,7 @@
 
     // Engineering Metrics & Skills
     $('#metrics').innerHTML = D.engineeringMetrics.map((m, i) => {
-      const pairs = [['#991b1b', '#ff2a5f'], ['#b91c1c', '#f59e0b'], ['#be123c', '#fb7185'], ['#7f1d1d', '#ef4444'], ['#dc2626', '#fbbf24']][i % 5];
+      const pairs = [['#1e3a8a', '#3b82f6'], ['#1d4ed8', '#38bdf8'], ['#0369a1', '#06b6d4'], ['#1e40af', '#60a5fa'], ['#2563eb', '#22d3ee']][i % 5];
       return `<div class="bar" data-reveal data-bar="${m.value}" style="--c1:${pairs[0]};--c2:${pairs[1]}"><div class="bar__head"><span>${esc(L(m, 'name'))}</span><b>0%</b></div><div class="bar__track"><i></i></div></div>`;
     }).join('');
 
@@ -275,10 +275,10 @@
       <div class="edu__langs">${E.languages.map(l => `<span>${esc(l.name)}<b>${esc(l.level)}</b></span>`).join('')}</div>`;
 
     $('#contactLinks').innerHTML = [
-      ['https://wa.me/' + P.phone.replace(/\D/g, ''), T('whatsapp'), P.phone, T('hintWa'), '#dc2626', '#f59e0b'],
-      ['mailto:' + P.email, T('email'), P.email, T('hintMail'), '#991b1b', '#ff2a5f'],
-      [P.linkedin, T('linkedin'), P.linkedin.replace(/^https?:\/\//, ''), T('hintIn'), '#be123c', '#fb7185'],
-      [P.github, T('github'), P.github.replace(/^https?:\/\//, ''), T('hintGh'), '#b91c1c', '#ea580c']
+      ['https://wa.me/' + P.phone.replace(/\D/g, ''), T('whatsapp'), P.phone, T('hintWa'), '#1d4ed8', '#38bdf8'],
+      ['mailto:' + P.email, T('email'), P.email, T('hintMail'), '#1e3a8a', '#3b82f6'],
+      [P.linkedin, T('linkedin'), P.linkedin.replace(/^https?:\/\//, ''), T('hintIn'), '#0369a1', '#06b6d4'],
+      [P.github, T('github'), P.github.replace(/^https?:\/\//, ''), T('hintGh'), '#1e40af', '#60a5fa']
     ].filter(x => safe(x[0])).map(([href, label, value, hint, c1, c2]) => `<a class="clink" data-reveal data-magnet href="${safe(href)}" ${/^http/i.test(href) ? 'target="_blank" rel="noopener"' : ''} style="--c1:${c1};--c2:${c2}"><span class="clink__label">${esc(label)}</span><span class="clink__value">${esc(value)}</span><span class="clink__hint">${esc(hint)}</span></a>`).join('');
 
     bindCards(); bindMagnets(); bindSpotlights(); observe(); tilt();
@@ -692,11 +692,12 @@
   }
   initScopeBuilder();
 
-  // ---------- Crimson Obsidian Brand Palette ----------
+  // ---------- Midnight Sapphire Blue Brand Palette ----------
   const THEME_PALETTES = {
-    crimson: { c1: 0xdc2626, c2: 0xff2a5f, c3: 0xf59e0b }
+    crimson: { c1: 0x2563eb, c2: 0x3b82f6, c3: 0x38bdf8 },
+    sapphire: { c1: 0x2563eb, c2: 0x3b82f6, c3: 0x38bdf8 }
   };
-  const activeTheme = 'crimson';
+  const activeTheme = 'sapphire';
   try { localStorage.removeItem('sk_theme_v2'); } catch (e) {}
   root.setAttribute('data-theme', activeTheme);
 
@@ -1129,7 +1130,7 @@
       const c = document.createElement('canvas');
       c.width = 256; c.height = 64;
       const ctx = c.getContext('2d');
-      ctx.fillStyle = 'rgba(14, 6, 9, 0.86)';
+      ctx.fillStyle = 'rgba(5, 12, 28, 0.88)';
       ctx.fillRect(0, 0, 256, 64);
       ctx.strokeStyle = hexColor;
       ctx.lineWidth = 3;
@@ -1137,17 +1138,17 @@
       ctx.fillStyle = hexColor;
       ctx.font = 'bold 13px monospace';
       ctx.fillText(label, 14, 27);
-      ctx.fillStyle = '#faf7f7';
+      ctx.fillStyle = '#f4f8ff';
       ctx.font = '11px sans-serif';
       ctx.fillText(sub, 14, 47);
       return new THREE.CanvasTexture(c);
     }
 
     const slabDefs = [
-      { label: '01 // FRONTEND UI', sub: 'React.js · Angular · ES6+ · RTL', col: '#ff2a5f' },
-      { label: '02 // BACKEND API', sub: 'PHP Laravel · Node.js · RBAC', col: '#dc2626' },
-      { label: '03 // DATABASE & CMS', sub: 'MySQL · MongoDB · Admin Suites', col: '#f59e0b' },
-      { label: '04 // DEVOPS & IOT', sub: 'Cloud · SEO · Smart Hardware', col: '#fb7185' }
+      { label: '01 // FRONTEND UI', sub: 'React.js · Angular · ES6+ · RTL', col: '#38bdf8' },
+      { label: '02 // BACKEND API', sub: 'PHP Laravel · Node.js · RBAC', col: '#3b82f6' },
+      { label: '03 // DATABASE & CMS', sub: 'MySQL · MongoDB · Admin Suites', col: '#06b6d4' },
+      { label: '04 // DEVOPS & IOT', sub: 'Cloud · SEO · Smart Hardware', col: '#60a5fa' }
     ];
     const sharedBoxGeo = new THREE.BoxGeometry(4.2, 0.22, 2.5);
     const sharedEdgesGeo = new THREE.EdgesGeometry(sharedBoxGeo);
@@ -1190,7 +1191,7 @@
       const c = document.createElement('canvas');
       c.width = 160; c.height = 52;
       const ctx = c.getContext('2d');
-      ctx.fillStyle = 'rgba(12, 5, 8, 0.92)';
+      ctx.fillStyle = 'rgba(5, 11, 26, 0.92)';
       ctx.fillRect(3, 3, 154, 46);
       ctx.lineWidth = 3;
       ctx.strokeStyle = borderHex;
@@ -1208,14 +1209,14 @@
     }
 
     const techNodes = [
-      { name: 'React.js', col: '#ff2a5f', r: 4.4, speed: 0.7, phase: 0, tilt: 0.35 },
-      { name: 'Laravel', col: '#dc2626', r: 4.4, speed: 0.7, phase: Math.PI * 0.5, tilt: 0.35 },
-      { name: 'Node.js', col: '#f59e0b', r: 4.4, speed: 0.7, phase: Math.PI, tilt: 0.35 },
-      { name: 'MySQL', col: '#fb7185', r: 4.4, speed: 0.7, phase: Math.PI * 1.5, tilt: 0.35 },
-      { name: 'Angular', col: '#ef4444', r: 5.3, speed: -0.52, phase: 0.4, tilt: -0.4 },
-      { name: 'PHP OOP', col: '#f59e0b', r: 5.3, speed: -0.52, phase: 2.0, tilt: -0.4 },
-      { name: 'MongoDB', col: '#ff2a5f', r: 5.3, speed: -0.52, phase: 3.6, tilt: -0.4 },
-      { name: 'IoT / CMS', col: '#fda4af', r: 5.3, speed: -0.52, phase: 5.1, tilt: -0.4 }
+      { name: 'React.js', col: '#38bdf8', r: 4.4, speed: 0.7, phase: 0, tilt: 0.35 },
+      { name: 'Laravel', col: '#3b82f6', r: 4.4, speed: 0.7, phase: Math.PI * 0.5, tilt: 0.35 },
+      { name: 'Node.js', col: '#06b6d4', r: 4.4, speed: 0.7, phase: Math.PI, tilt: 0.35 },
+      { name: 'MySQL', col: '#60a5fa', r: 4.4, speed: 0.7, phase: Math.PI * 1.5, tilt: 0.35 },
+      { name: 'Angular', col: '#2563eb', r: 5.3, speed: -0.52, phase: 0.4, tilt: -0.4 },
+      { name: 'PHP OOP', col: '#38bdf8', r: 5.3, speed: -0.52, phase: 2.0, tilt: -0.4 },
+      { name: 'MongoDB', col: '#22d3ee', r: 5.3, speed: -0.52, phase: 3.6, tilt: -0.4 },
+      { name: 'IoT / CMS', col: '#93c5fd', r: 5.3, speed: -0.52, phase: 5.1, tilt: -0.4 }
     ].map(n => {
       const sp = makeBadgeSprite(n.name, n.col);
       sp.userData = n;
