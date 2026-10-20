@@ -979,11 +979,14 @@ section { position: relative; max-width: var(--max); margin: 0 auto; padding: 52
   width: 336px;
   position: relative; border-radius: var(--r-lg); overflow: hidden; cursor: pointer;
   background: var(--glass-strong); border: 1px solid var(--line);
-  transform-style: preserve-3d; will-change: transform;
-  transition: border-color 300ms var(--ease), box-shadow 300ms var(--ease);
+  transition: transform 260ms var(--ease), border-color 260ms var(--ease), box-shadow 260ms var(--ease);
   text-align: start; display: flex; flex-direction: column;
 }
-.card:hover { border-color: color-mix(in srgb, var(--c1) 65%, transparent); box-shadow: 0 24px 48px -24px color-mix(in srgb, var(--c1) 70%, transparent); }
+.card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--c1) 65%, transparent);
+  box-shadow: 0 24px 48px -24px color-mix(in srgb, var(--c1) 70%, transparent);
+}
 .card.is-hidden { display: none; }
 .card__chrome {
   display: flex; align-items: center; justify-content: space-between; gap: 8px;

@@ -173,7 +173,7 @@
       const live = safe(p.url);
       const topTags = (p.tags || []).slice(0, 4).map(t => `<span>${esc(t)}</span>`).join('');
       const resultLine = Lx(p, 'result_en', 'result_ar') || L(p, 'subtitle');
-      return `<article class="card is-in" data-tilt data-spotlight data-id="${p.id}" data-cat="${p.category}" data-idx="${i}" style="--c1:${c1};--c2:${c2}">
+      return `<article class="card is-in" data-spotlight data-id="${p.id}" data-cat="${p.category}" data-idx="${i}" style="--c1:${c1};--c2:${c2}">
         <div class="card__chrome"><div class="card__dots"><i></i><i></i><i></i></div><span>${esc(p.urlDisplay || p.id)}</span></div>
         <button type="button" class="card__open" aria-label="${esc(p.title)} — details">
           <div class="card__cover${isPlaceholder ? ' card__cover--neutral' : ''}${svg ? ' card__cover--svg' : ''}">${media}<i class="card__shine"></i><span class="card__badge">${esc(p.badge)}</span></div>
