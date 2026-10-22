@@ -1553,4 +1553,132 @@
     tick();
   }
   initWebGL();
+
+  // ---------- Soft Procedural Ambient Soundscape (Web Audio API) ----------
+  function initAmbientAudio() {
+    const btn = $('#audioToggle'), lbl = $('#audioLabel');
+    if (!btn) return;
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) { btn.style.display = 'none'; return; }
+
+    let ctx = null, masterGain = null, filterNode = null, chordTimer = null;
+    let isPlaying = false, userMuted = false, chordIdx = 0;
+
+    // Warm dreamy ambient chords (Fmaj9 -> Cmaj9 -> Am9 -> G6)
+    const CHORDS = [
+      [174.61, 220.00, 261.63, 329.63, 392.00],
+      [130.81, 196.00, 246.94, 293.66, 392.00],
+      [110.00, 164.81, 220.00, 261.63, 329.63],
+      [196.00, 246.94, 293.66, 329.63, 392.00]
+    ];
+
+    function updateUI(on) {
+      btn.classList.toggle('is-playing', on);
+      btn.setAttribute('aria-pressed', String(on));
+      if (lbl) lbl.textContent = on ? 'Sound On' : 'Sound Off';
+    }
+
+    function playPadChord() {
+      if (!ctx || !isPlaying || document.hidden) return;
+      const now = ctx.currentTime;
+      const notes = CHORDS[chordIdx % CHORDS.length];
+      chordIdx++;
+
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const noteGain = ctx.createGain();
+        osc.type = i % 2 === 0 ? 'sine' : 'triangle';
+        // Subtle detune for lush chorus warmth
+        osc.frequency.setValueAtTime(freq, now);
+        osc.detune.setValueAtTime((i - 2) * 4, now);
+
+        const peak = i === 0 ? 0.045 : 0.024;
+        noteGain.gain.setValueAtTime(0.0001, now);
+        noteGain.gain.linearRampToValueAtTime(peak, now + 2.4);
+        noteGain.gain.setValueAtTime(peak, now + 4.2);
+        noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 7.6);
+
+        osc.connect(noteGain);
+        noteGain.connect(filterNode);
+        osc.start(now);
+        osc.stop(now + 7.8);
+      });
+    }
+
+    function startAudio() {
+      if (isPlaying) return;
+      try {
+        if (!ctx) {
+          ctx = new AudioCtx();
+          masterGain = ctx.createGain();
+          masterGain.gain.setValueAtTime(0.0001, ctx.currentTime);
+
+          filterNode = ctx.createBiquadFilter();
+          filterNode.type = 'lowpass';
+          filterNode.frequency.setValueAtTime(620, ctx.currentTime);
+          filterNode.Q.setValueAtTime(0.7, ctx.currentTime);
+
+          // Gentle stereo delay for atmospheric space
+          const delay = ctx.createDelay(2.0);
+          delay.delayTime.setValueAtTime(0.45, ctx.currentTime);
+          const fb = ctx.createGain();
+          fb.gain.setValueAtTime(0.28, ctx.currentTime);
+          delay.connect(fb);
+          fb.connect(delay);
+
+          filterNode.connect(masterGain);
+          filterNode.connect(delay);
+          delay.connect(masterGain);
+          masterGain.connect(ctx.destination);
+        }
+        if (ctx.state === 'suspended') ctx.resume();
+        isPlaying = true;
+        masterGain.gain.cancelScheduledValues(ctx.currentTime);
+        masterGain.gain.setValueAtTime(Math.max(0.0001, masterGain.gain.value), ctx.currentTime);
+        masterGain.gain.linearRampToValueAtTime(0.32, ctx.currentTime + 1.2);
+        updateUI(true);
+        playPadChord();
+        clearInterval(chordTimer);
+        chordTimer = setInterval(playPadChord, 5400);
+      } catch (e) {}
+    }
+
+    function stopAudio() {
+      if (!isPlaying || !ctx) return;
+      isPlaying = false;
+      clearInterval(chordTimer);
+      const now = ctx.currentTime;
+      masterGain.gain.cancelScheduledValues(now);
+      masterGain.gain.setValueAtTime(Math.max(0.0001, masterGain.gain.value), now);
+      masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+      updateUI(false);
+    }
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (isPlaying) {
+        userMuted = true;
+        stopAudio();
+      } else {
+        userMuted = false;
+        startAudio();
+      }
+    });
+
+    // Auto-start soft ambient soundscape on first user interaction
+    const unlockOnce = () => {
+      removeEventListener('pointerdown', unlockOnce);
+      removeEventListener('keydown', unlockOnce);
+      if (!userMuted && !isPlaying && !reduced) startAudio();
+    };
+    addEventListener('pointerdown', unlockOnce, { once: true, passive: true });
+    addEventListener('keydown', unlockOnce, { once: true, passive: true });
+
+    document.addEventListener('visibilitychange', () => {
+      if (!ctx) return;
+      if (document.hidden && isPlaying) ctx.suspend();
+      else if (!document.hidden && isPlaying) ctx.resume();
+    });
+  }
+  initAmbientAudio();
 })();
