@@ -273,7 +273,7 @@
     $('#contactLinks').innerHTML = [
       ['https://wa.me/' + P.phone.replace(/\D/g, ''), T('whatsapp'), P.phone, T('hintWa'), '#1d4ed8', '#38bdf8'],
       ['mailto:' + P.email, T('email'), P.email, T('hintMail'), '#1e3a8a', '#3b82f6'],
-      [P.linkedin, T('linkedin'), P.linkedin.replace(/^https?:\/\//, ''), T('hintIn'), '#0369a1', '#06b6d4'],
+      [P.linkedin, T('linkedin'), P.linkedin.replace(/^https?:\/\//, '').replace(/-[0-9a-f]{6,}\/?$/i, ''), T('hintIn'), '#0369a1', '#06b6d4'],
       [P.github, T('github'), P.github.replace(/^https?:\/\//, ''), T('hintGh'), '#1e40af', '#60a5fa']
     ].filter(x => safe(x[0])).map(([href, label, value, hint, c1, c2]) => `<a class="clink" data-reveal data-magnet href="${safe(href)}" ${/^http/i.test(href) ? 'target="_blank" rel="noopener"' : ''} style="--c1:${c1};--c2:${c2}"><span class="clink__label">${esc(label)}</span><span class="clink__value">${esc(value)}</span><span class="clink__hint">${esc(hint)}</span></a>`).join('');
 
@@ -713,7 +713,7 @@
           $$('.ring', el).forEach(r => animate(r, { strokeDashoffset: [213.6, 213.6 * (1 - +r.dataset.ring)], duration: 1600, ease: 'out(3)' }));
         }
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    }, { rootMargin: '0px 0px 120px 0px', threshold: 0.01 });
     $$('[data-reveal]:not(.hero [data-reveal])').forEach(el => io.observe(el));
     if (reduced) finishAll();
   }
@@ -1465,7 +1465,7 @@
           coreGeoIdx = 3; pShapeIdx = 0; showLayers = 0; showPlanet = 0.7; showMorph = 0.6; sideDir = 1.18; sceneDim = 0.42; scaleTarget = 0.88;
         } else {
           // Stage 06 (Contact): Crisp "SK" Monogram in the open left stage
-          coreGeoIdx = 4; pShapeIdx = 1; showLayers = 0; showPlanet = 0; showMorph = 0; sideDir = -1.85; sceneDim = 1.0; scaleTarget = 1.1;
+          coreGeoIdx = 4; pShapeIdx = 1; showLayers = 0; showPlanet = 0; showMorph = 0; sideDir = -1.85; sceneDim = 1.0; scaleTarget = 0.92;
         }
       }
 
@@ -1559,8 +1559,8 @@
       if (zone === 5 && !isMob) {
         const halfW = 9.754 * camera.aspect;
         const cardsHalfUnits = Math.min(halfW * 0.56, (390 / (innerWidth * 0.5)) * halfW);
-        baseOffset = -((halfW + cardsHalfUnits) * 0.5) * rtlSign();
-        baseY = 1.65;
+        baseOffset = -((halfW + cardsHalfUnits) * 0.54) * rtlSign();
+        baseY = 1.35;
       }
       const targetStageX = baseOffset + ptrX * (isMob ? 0.6 : (zone === 5 ? 0.9 : 1.6));
       const targetStageY = baseY - ptrY * (zone === 5 ? 0.8 : 1.4);
