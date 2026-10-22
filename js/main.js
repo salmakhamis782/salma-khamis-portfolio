@@ -990,8 +990,12 @@
 
   let scrollTicking = false;
   const computeActiveSec = sy => {
+    if (sy >= maxScroll - 140 && secOffsets.length) {
+      activeSecIdx = secOffsets.length - 1;
+      return activeSecIdx;
+    }
     let current = -1;
-    const triggerY = sy + innerHeight * 0.45;
+    const triggerY = sy + innerHeight * 0.5;
     for (let i = 0; i < secOffsets.length; i++) {
       if (secOffsets[i] && triggerY >= secOffsets[i] - 64) current = i;
     }
@@ -1240,36 +1244,45 @@
       }
     }
 
-    // Shape 1: "SK" Monogram
+    // Shape 1: "SK" Monogram (Crisp 3D Hologram + Rounded-Square Brand Frame)
     (function buildSKTargets() {
       const c = document.createElement('canvas');
-      c.width = 120; c.height = 72;
+      c.width = 180; c.height = 108;
       const ctx = c.getContext('2d');
-      ctx.fillStyle = '#000'; ctx.fillRect(0, 0, 120, 72);
+      ctx.fillStyle = '#000'; ctx.fillRect(0, 0, 180, 108);
       ctx.fillStyle = '#fff';
-      ctx.font = 'bold 52px Arial, sans-serif';
+      ctx.font = '900 76px "Space Grotesk", "Arial Black", Arial, sans-serif';
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('SK', 60, 37);
-      const img = ctx.getImageData(0, 0, 120, 72).data;
+      ctx.fillText('SK', 90, 56);
+      const img = ctx.getImageData(0, 0, 180, 108).data;
       const pts = [];
-      for (let y = 0; y < 72; y += 2) {
-        for (let x = 0; x < 120; x += 2) {
-          if (img[(y * 120 + x) * 4] > 128) {
-            pts.push([(x - 60) * 0.09, (36 - y) * 0.09]);
+      for (let y = 0; y < 108; y += 2) {
+        for (let x = 0; x < 180; x += 2) {
+          if (img[(y * 180 + x) * 4] > 128) {
+            pts.push([(x - 90) * 0.046, (54 - y) * 0.046]);
           }
         }
       }
+      const framePts = [];
+      const hw = 3.25, hh = 2.25;
+      for (let j = 0; j < 180; j++) {
+        const t = (j / 180) * Math.PI * 2;
+        const cs = Math.cos(t), sn = Math.sin(t);
+        const rx = Math.sign(cs) * Math.pow(Math.abs(cs), 0.42) * hw;
+        const ry = Math.sign(sn) * Math.pow(Math.abs(sn), 0.42) * hh;
+        framePts.push([rx, ry]);
+      }
       for (let i = 0; i < P_COUNT; i++) {
-        if (i < P_COUNT * 0.78 && pts.length) {
-          const p = pts[i % pts.length];
-          shapeTargets[1][i * 3] = p[0] + (Math.random() - 0.5) * 0.14;
-          shapeTargets[1][i * 3 + 1] = p[1] + (Math.random() - 0.5) * 0.14;
-          shapeTargets[1][i * 3 + 2] = (Math.random() - 0.5) * 0.55;
+        if (i < P_COUNT * 0.84 && pts.length) {
+          const p = pts[(i * 7) % pts.length];
+          shapeTargets[1][i * 3] = p[0] + (Math.random() - 0.5) * 0.05;
+          shapeTargets[1][i * 3 + 1] = p[1] + (Math.random() - 0.5) * 0.05;
+          shapeTargets[1][i * 3 + 2] = (i % 2 === 0 ? 0.12 : -0.12) + (Math.random() - 0.5) * 0.08;
         } else {
-          const ang = (i / P_COUNT) * Math.PI * 10;
-          shapeTargets[1][i * 3] = Math.cos(ang) * 4.4;
-          shapeTargets[1][i * 3 + 1] = Math.sin(ang) * 4.4;
-          shapeTargets[1][i * 3 + 2] = (Math.random() - 0.5) * 1.8;
+          const fp = framePts[i % framePts.length];
+          shapeTargets[1][i * 3] = fp[0] + (Math.random() - 0.5) * 0.06;
+          shapeTargets[1][i * 3 + 1] = fp[1] + (Math.random() - 0.5) * 0.06;
+          shapeTargets[1][i * 3 + 2] = (Math.random() - 0.5) * 0.22;
         }
       }
     })();
@@ -1446,13 +1459,13 @@
           coreGeoIdx = 2; pShapeIdx = 2; showLayers = 0; showPlanet = 0; showMorph = 1.15; sideDir = 1.15; sceneDim = 0.92; scaleTarget = 1.12;
         } else if (zone === 3) {
           // Stage 04 (Playground): Left side
-          coreGeoIdx = 4; pShapeIdx = 1; showLayers = 0; showPlanet = 0.2; showMorph = 0.45; sideDir = -1.1; sceneDim = 0.58; scaleTarget = 0.95;
+          coreGeoIdx = 4; pShapeIdx = 3; showLayers = 0; showPlanet = 0.2; showMorph = 0.45; sideDir = -1.1; sceneDim = 0.58; scaleTarget = 0.95;
         } else if (zone === 4) {
           // Stage 05 (Skills/Experience): Gently dimmed behind dense text/timeline
           coreGeoIdx = 3; pShapeIdx = 0; showLayers = 0; showPlanet = 0.7; showMorph = 0.6; sideDir = 1.18; sceneDim = 0.42; scaleTarget = 0.88;
         } else {
-          // Stage 06 (Contact): Rocket on side
-          coreGeoIdx = 4; pShapeIdx = 3; showLayers = 0; showPlanet = 0; showMorph = 0.3; sideDir = 0.95; sceneDim = 0.78; scaleTarget = 1.0;
+          // Stage 06 (Contact): Crisp "SK" Monogram in the open left stage
+          coreGeoIdx = 4; pShapeIdx = 1; showLayers = 0; showPlanet = 0; showMorph = 0; sideDir = -1.85; sceneDim = 1.0; scaleTarget = 1.1;
         }
       }
 
@@ -1534,14 +1547,23 @@
         }
         pGeo.attributes.position.needsUpdate = true;
       }
-      pMat.opacity += (0.92 * effDim - pMat.opacity) * ease;
-      shifterPoints.rotation.y += (Math.sin(elapsed * 0.38) * 0.32 + ptrX * 0.45 - shifterPoints.rotation.y) * ease;
-      shifterPoints.rotation.x += (-ptrY * 0.3 - shifterPoints.rotation.x) * ease;
+      pMat.opacity += ((pShapeIdx === 1 ? 0.98 : 0.92) * effDim - pMat.opacity) * ease;
+      const rotAmp = pShapeIdx === 1 ? 0.14 : 0.32;
+      const ptrAmp = pShapeIdx === 1 ? 0.22 : 0.45;
+      shifterPoints.rotation.y += (Math.sin(elapsed * 0.45) * rotAmp + ptrX * ptrAmp - shifterPoints.rotation.y) * ease;
+      shifterPoints.rotation.x += (-ptrY * (pShapeIdx === 1 ? 0.16 : 0.3) - shifterPoints.rotation.x) * ease;
 
-      // Smoothly position on empty side of each section (flips for RTL on desktop, centered & smaller on mobile)
-      const baseOffset = isMob ? 0 : sideDir * 5.2 * rtlSign();
-      const targetStageX = baseOffset + ptrX * (isMob ? 0.6 : 1.6);
-      const targetStageY = (isMob ? 0.2 : Math.sin(scrollRatio * Math.PI * 2) * 0.6) - ptrY * 1.4;
+      // Smoothly position on empty side of each section (in Contact section, place "SK" in the open left space)
+      let baseOffset = isMob ? 0 : sideDir * 5.2 * rtlSign();
+      let baseY = isMob ? 0.2 : Math.sin(scrollRatio * Math.PI * 2) * 0.6;
+      if (zone === 5 && !isMob) {
+        const halfW = 9.754 * camera.aspect;
+        const cardsHalfUnits = Math.min(halfW * 0.56, (390 / (innerWidth * 0.5)) * halfW);
+        baseOffset = -((halfW + cardsHalfUnits) * 0.5) * rtlSign();
+        baseY = 1.65;
+      }
+      const targetStageX = baseOffset + ptrX * (isMob ? 0.6 : (zone === 5 ? 0.9 : 1.6));
+      const targetStageY = baseY - ptrY * (zone === 5 ? 0.8 : 1.4);
       stageGroup.position.x += (targetStageX - stageGroup.position.x) * ease;
       stageGroup.position.y += (targetStageY - stageGroup.position.y) * ease;
 

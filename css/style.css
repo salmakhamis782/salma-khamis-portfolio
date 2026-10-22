@@ -1661,7 +1661,7 @@ section { position: relative; max-width: var(--max); margin: 0 auto; padding: 52
 .contact__title { font-size: var(--t-3xl); font-weight: 800; letter-spacing: -0.03em; margin-top: var(--s-3); }
 .contact__lead { margin: var(--s-3) auto 0; max-width: 56ch; color: var(--muted); font-size: var(--t-base); }
 .contact__direct { margin-top: var(--s-4); display: flex; justify-content: center; gap: var(--s-3); flex-wrap: wrap; }
-.contact__links { max-width: 920px; margin: var(--s-6) auto 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-4); text-align: start; }
+.contact__links { max-width: 780px; margin: var(--s-6) auto 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-4); text-align: start; }
 .clink {
   position: relative; display: flex; flex-direction: column; gap: var(--s-1); padding: var(--s-5); border-radius: var(--r-lg);
   border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(14px); overflow: hidden; will-change: transform;
